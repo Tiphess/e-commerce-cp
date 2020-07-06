@@ -1,6 +1,6 @@
 using System;
 
-namespace e_commerce_cp.Models
+namespace e_commerce_cp.ViewModels
 {
     public class ErrorViewModel
     {

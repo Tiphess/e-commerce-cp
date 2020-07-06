@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using e_commerce_cp.Models;
+using e_commerce_cp.ViewModels;
 
 namespace e_commerce_cp.Controllers
 {

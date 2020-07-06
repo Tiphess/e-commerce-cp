@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 
 namespace e_commerce_cp.Models
 {
-    public class Dummy
+    public class SpecificationField
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public Specification Specification { get; set; }
     }
 }

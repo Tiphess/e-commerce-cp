@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using e_commerce_cp.Data;
 
 namespace e_commerce_cp.Migrations
 {
     [DbContext(typeof(ECommerceCPContext))]
-    partial class ECommerceCPContextModelSnapshot : ModelSnapshot
+    [Migration("20200706205234_AddDomainTables")]
+    partial class AddDomainTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
