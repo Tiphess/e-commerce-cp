@@ -1,5 +1,4 @@
-﻿//using e_commerce_cp.EntityConfigurations;
-using e_commerce_cp.EntityConfigurations;
+﻿using e_commerce_cp.EntityConfigurations;
 using e_commerce_cp.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
