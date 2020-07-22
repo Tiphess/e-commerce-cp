@@ -13,7 +13,6 @@ namespace e_commerce_cp.Models
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Password { get; set; }
-        //public string ShoppingCartId { get; set; }
         public ICollection<Order> Orders { get; set; }
         public IList<UserRole> UserRoles { get; set; }
     }

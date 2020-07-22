@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - e_commerce_cp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/authentication.css" />
 </head>
 <body>
     <header>
@@ -36,10 +37,10 @@
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">Register</a>
+                            <a class="nav-link text-dark" asp-controller="Authentication" asp-action="Register">Register</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">Login</a>
+                            <a class="nav-link text-dark" asp-controller="Authentication" asp-action="Login">Login</a>
                         </li>
                     </ul>
                 </div>

@@ -1,0 +1,8 @@
+﻿#RegisterFormContainer{
+    height:700px;
+}
+
+    #RegisterFormContainer > row {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
