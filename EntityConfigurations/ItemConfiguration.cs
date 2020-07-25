@@ -13,6 +13,7 @@ namespace e_commerce_cp.EntityConfigurations
         public void Configure(EntityTypeBuilder<Item> b)
         {
             b.HasKey(i => i.Id);
+            b.Property(i => i.Id).ValueGeneratedOnAdd();
 
             b.Property(i => i.Name).HasMaxLength(255).IsRequired();
             b.Property(i => i.Description).HasMaxLength(2000).IsRequired();

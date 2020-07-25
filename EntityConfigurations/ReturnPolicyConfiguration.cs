@@ -13,6 +13,8 @@ namespace e_commerce_cp.EntityConfigurations
         public void Configure(EntityTypeBuilder<ReturnPolicy> b)
         {
             b.HasKey(rp => rp.Id);
+            b.Property(rp => rp.Id).ValueGeneratedOnAdd();
+
 
             b.Property(rp => rp.ReturnForRefundWithinDays).HasDefaultValue(0);
             b.Property(rp => rp.ReturnForReplacementWithinDays).HasDefaultValue(0);

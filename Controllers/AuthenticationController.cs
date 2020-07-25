@@ -4,15 +4,22 @@ using System.Linq;
 using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using e_commerce_cp.Data;
+using e_commerce_cp.DataAccessLayer.Authentication;
 using e_commerce_cp.Models;
+using e_commerce_cp.Utils;
+using e_commerce_cp.Utils.AppSettings;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace e_commerce_cp.Controllers
 {
     public class AuthenticationController : Controller
     {
+
         public IActionResult Login()
         {
             return View();
@@ -25,14 +32,15 @@ namespace e_commerce_cp.Controllers
 
         public IActionResult RegisterNewUser(User user)
         {
-            return RedirectToAction("Index", "Home");
+            var dal = new DALUser();
+            var registeredUser = dal.Save(user);
+            return RedirectToAction("SignInUser", "Authentication", registeredUser);
         }
 
         public async Task<IActionResult> SignInUser(User user)
         {
             //Logic to get the user's role and see if he exists.. hard code for now
-            user.FirstName = "Guillaume";
-            user.LastName = "Cadieux";
+            //Implement a method like AuthenticateUser();
 
             var claims = new List<Claim>
             {

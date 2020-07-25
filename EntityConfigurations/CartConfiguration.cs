@@ -13,6 +13,7 @@ namespace e_commerce_cp.EntityConfigurations
         public void Configure(EntityTypeBuilder<Cart> b)
         {
             b.HasKey(c => c.Id);
+            b.Property(c => c.Id).ValueGeneratedOnAdd();
             //b.HasOne(c => c.User).WithOne(u => u.ShoppingCart);
         }
     }

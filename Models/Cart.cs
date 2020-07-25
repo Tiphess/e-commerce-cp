@@ -7,7 +7,7 @@ namespace e_commerce_cp.Models
 {
     public class Cart
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public User User { get; set; }
         public IList<ItemCart> ItemCarts { get; set; }
     }

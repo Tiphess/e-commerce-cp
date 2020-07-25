@@ -13,6 +13,7 @@ namespace e_commerce_cp.EntityConfigurations
         public void Configure(EntityTypeBuilder<Order> b)
         {
             b.HasKey(o => o.Id);
+            b.Property(o => o.Id).ValueGeneratedOnAdd();
 
             b.Property(o => o.Date).IsRequired();
 

@@ -15,6 +15,14 @@
     <Compile Remove="Data\Migrations\20200706203107_AddDomainTables.Designer.cs" />
     <Compile Remove="Data\Migrations\20200706203848_AddDomainTables.cs" />
     <Compile Remove="Data\Migrations\20200706203848_AddDomainTables.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200725014029_AutoIncrementUsersTable.cs" />
+    <Compile Remove="Data\Migrations\20200725014029_AutoIncrementUsersTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200725015122_AutoIncrementsOnAllTablesAndConvertingAllIdsToIntegers.cs" />
+    <Compile Remove="Data\Migrations\20200725015122_AutoIncrementsOnAllTablesAndConvertingAllIdsToIntegers.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200725015825_ReplaceIdentityColumnsForNewType.cs" />
+    <Compile Remove="Data\Migrations\20200725015825_ReplaceIdentityColumnsForNewType.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200725021057_AddDomainTables.cs" />
+    <Compile Remove="Data\Migrations\20200725021057_AddDomainTables.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

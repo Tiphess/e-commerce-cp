@@ -13,6 +13,7 @@ namespace e_commerce_cp.EntityConfigurations
         public void Configure(EntityTypeBuilder<Detail> b)
         {
             b.HasKey(d => d.Id);
+            b.Property(d => d.Id).ValueGeneratedOnAdd();
 
             b.HasOne(d => d.Item).WithOne(i => i.Details);
             b.HasMany(d => d.Specifications).WithOne(s => s.Detail);

@@ -13,6 +13,7 @@ namespace e_commerce_cp.EntityConfigurations
         public void Configure(EntityTypeBuilder<Distributor> b)
         {
             b.HasKey(d => d.Id);
+            b.Property(d => d.Id).ValueGeneratedOnAdd();
 
             b.Property(d => d.Name).HasMaxLength(255).IsRequired();
             b.Property(d => d.Phone).HasMaxLength(20).IsRequired();

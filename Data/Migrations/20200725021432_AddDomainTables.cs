@@ -7,6 +7,9 @@ namespace e_commerce_cp.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Dummies");
+
             migrationBuilder.CreateTable(
                 name: "Details",
                 columns: table => new
@@ -53,7 +56,8 @@ namespace e_commerce_cp.Migrations
                 name: "Roles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 255, nullable: false)
                 },
                 constraints: table =>
@@ -65,7 +69,8 @@ namespace e_commerce_cp.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(maxLength: 255, nullable: false),
                     LastName = table.Column<string>(maxLength: 255, nullable: false),
                     Email = table.Column<string>(maxLength: 255, nullable: false),
@@ -101,19 +106,20 @@ namespace e_commerce_cp.Migrations
                 name: "Items",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 255, nullable: false),
                     Description = table.Column<string>(maxLength: 2000, nullable: false),
                     LimitPerCustomer = table.Column<int>(nullable: false, defaultValue: 0),
                     IsInStock = table.Column<bool>(nullable: false, defaultValue: false),
                     Price = table.Column<double>(nullable: false),
                     Category = table.Column<string>(maxLength: 255, nullable: true),
-                    DistributorId = table.Column<int>(nullable: false),
-                    DetailsId = table.Column<int>(nullable: false),
-                    ReturnPolicyId = table.Column<int>(nullable: false),
                     Image1 = table.Column<byte[]>(nullable: true),
                     Image2 = table.Column<byte[]>(nullable: true),
-                    Image3 = table.Column<byte[]>(nullable: true)
+                    Image3 = table.Column<byte[]>(nullable: true),
+                    DistributorId = table.Column<int>(nullable: false),
+                    DetailsId = table.Column<int>(nullable: false),
+                    ReturnPolicyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -142,8 +148,9 @@ namespace e_commerce_cp.Migrations
                 name: "Carts",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -164,7 +171,7 @@ namespace e_commerce_cp.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Date = table.Column<DateTime>(nullable: false),
                     ExpectedArrival = table.Column<DateTime>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
+                    UserId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -181,8 +188,8 @@ namespace e_commerce_cp.Migrations
                 name: "UserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(nullable: false),
-                    RoleId = table.Column<string>(nullable: false)
+                    UserId = table.Column<int>(nullable: false),
+                    RoleId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -230,7 +237,7 @@ namespace e_commerce_cp.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Content = table.Column<string>(maxLength: 3000, nullable: true),
                     Rating = table.Column<int>(nullable: false),
-                    ItemId = table.Column<string>(nullable: true)
+                    ItemId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -247,8 +254,8 @@ namespace e_commerce_cp.Migrations
                 name: "ItemCarts",
                 columns: table => new
                 {
-                    ItemId = table.Column<string>(nullable: false),
-                    CartId = table.Column<string>(nullable: false)
+                    ItemId = table.Column<int>(nullable: false),
+                    CartId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -271,7 +278,7 @@ namespace e_commerce_cp.Migrations
                 name: "ItemOrders",
                 columns: table => new
                 {
-                    ItemId = table.Column<string>(nullable: false),
+                    ItemId = table.Column<int>(nullable: false),
                     OrderId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -392,6 +399,19 @@ namespace e_commerce_cp.Migrations
 
             migrationBuilder.DropTable(
                 name: "Details");
+
+            migrationBuilder.CreateTable(
+                name: "Dummies",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    name = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Dummies", x => x.id);
+                });
         }
     }
 }

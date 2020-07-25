@@ -7,8 +7,8 @@ namespace e_commerce_cp.Models
 {
     public class ItemCart
     {
-        public string ItemId { get; set; }
-        public string CartId { get; set; }
+        public int ItemId { get; set; }
+        public int CartId { get; set; }
         public Item Item { get; set; }
         public Cart Cart { get; set; }
     }

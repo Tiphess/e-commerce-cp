@@ -7,7 +7,7 @@ namespace e_commerce_cp.Models
 {
     public class Role
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public IList<UserRole> UserRoles { get; set; }
     }

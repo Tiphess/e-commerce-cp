@@ -21,11 +21,13 @@ namespace e_commerce_cp.Migrations
 
             modelBuilder.Entity("e_commerce_cp.Models.Cart", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -79,8 +81,10 @@ namespace e_commerce_cp.Migrations
 
             modelBuilder.Entity("e_commerce_cp.Models.Item", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(255)")
@@ -142,11 +146,11 @@ namespace e_commerce_cp.Migrations
 
             modelBuilder.Entity("e_commerce_cp.Models.ItemCart", b =>
                 {
-                    b.Property<string>("CartId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("CartId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("ItemId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("ItemId")
+                        .HasColumnType("int");
 
                     b.HasKey("CartId", "ItemId");
 
@@ -157,8 +161,8 @@ namespace e_commerce_cp.Migrations
 
             modelBuilder.Entity("e_commerce_cp.Models.ItemOrder", b =>
                 {
-                    b.Property<string>("ItemId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("ItemId")
+                        .HasColumnType("int");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
@@ -183,8 +187,8 @@ namespace e_commerce_cp.Migrations
                     b.Property<DateTime>("ExpectedArrival")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -226,8 +230,8 @@ namespace e_commerce_cp.Migrations
                         .HasColumnType("nvarchar(3000)")
                         .HasMaxLength(3000);
 
-                    b.Property<string>("ItemId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("ItemId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Rating")
                         .HasColumnType("int");
@@ -241,8 +245,10 @@ namespace e_commerce_cp.Migrations
 
             modelBuilder.Entity("e_commerce_cp.Models.Role", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -305,8 +311,10 @@ namespace e_commerce_cp.Migrations
 
             modelBuilder.Entity("e_commerce_cp.Models.User", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -340,11 +348,11 @@ namespace e_commerce_cp.Migrations
 
             modelBuilder.Entity("e_commerce_cp.Models.UserRole", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.HasKey("UserId", "RoleId");
 

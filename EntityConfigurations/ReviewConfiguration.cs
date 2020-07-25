@@ -13,6 +13,7 @@ namespace e_commerce_cp.EntityConfigurations
         public void Configure(EntityTypeBuilder<Review> b)
         {
             b.HasKey(r => r.Id);
+            b.Property(r => r.Id).ValueGeneratedOnAdd();
 
             b.Property(r => r.Content).HasMaxLength(3000);
         }
