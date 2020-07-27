@@ -13,16 +13,10 @@ namespace e_commerce_cp.Data
 {
     public class ECommerceCPContext : DbContext
     {
-
-        public ECommerceCPContext()
+        public ECommerceCPContext(DbContextOptions<ECommerceCPContext> options) : base(options)
         {
         }
-        //public ECommerceCPContext(DbContextOptions<ECommerceCPContext> options) : base(options)
-        //{
-        //}
 
-        //public DbSet<Dummy> Dummies { get; set; }
-        
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
@@ -59,12 +53,5 @@ namespace e_commerce_cp.Data
 
             base.OnModelCreating(builder);
         }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            //hard code the connection string here for now
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-S7B62LV\\SQLEXPRESS;Initial Catalog=e_commerce_cp_db;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-        }
-
     }
 }

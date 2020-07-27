@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using e_commerce_cp.Data;
+using e_commerce_cp.Data.Implementations;
+using e_commerce_cp.Data.Interfaces;
 using e_commerce_cp.Utils.AppSettings;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -31,8 +33,9 @@ namespace e_commerce_cp
             services.AddControllersWithViews();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
-            //services.AddDbContext<ECommerceCPContext>(options => options.UseSqlServer(Configuration.GetConnectionString("e_commerce_cp")));
-            //services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
+            services.AddDbContext<ECommerceCPContext>(options => options.UseSqlServer(Configuration.GetConnectionString("e_commerce_cp")));
+
+            services.AddScoped<IAuthenticationRepository, MockAuthenticationRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

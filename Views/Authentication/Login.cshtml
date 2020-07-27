@@ -1,6 +1,7 @@
 ﻿<div id="LoginFormContainer">
     <div class="row justify-content-center h-100">
         <div class="col-10 col-sm-5 my-auto">
+            @ViewBag.ErrorMessage
             @using (Html.BeginForm("SignInUser", "Authentication", FormMethod.Post, new { id = "LoginForm" }))
             {
                 <div class="form-group">

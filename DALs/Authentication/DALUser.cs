@@ -15,20 +15,17 @@ namespace e_commerce_cp.DataAccessLayer.Authentication
     {
         private ECommerceCPContext _context;
 
-        public DALUser()
+        public DALUser(ECommerceCPContext context)
         {
-            _context = new ECommerceCPContext();
+            _context = context;
         }
 
         public User Save(User user)
         {
-            using (var context = new ECommerceCPContext())
-            {
-                var userToReturn = context.Users.Add(user);
-                context.SaveChanges();
+                var userToReturn = _context.Users.Add(user);
+                _context.SaveChanges();
 
                 return userToReturn.Entity;
-            }
         }
     }
 }

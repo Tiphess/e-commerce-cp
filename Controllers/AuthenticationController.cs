@@ -5,6 +5,7 @@ using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using e_commerce_cp.Data;
+using e_commerce_cp.Data.Interfaces;
 using e_commerce_cp.DataAccessLayer.Authentication;
 using e_commerce_cp.Models;
 using e_commerce_cp.Utils;
@@ -19,6 +20,12 @@ namespace e_commerce_cp.Controllers
 {
     public class AuthenticationController : Controller
     {
+        private IAuthenticationRepository _repo;
+
+        public AuthenticationController(IAuthenticationRepository repo)
+        {
+            _repo = repo;
+        }
 
         public IActionResult Login()
         {
@@ -32,9 +39,8 @@ namespace e_commerce_cp.Controllers
 
         public IActionResult RegisterNewUser(User user)
         {
-            var dal = new DALUser();
-            var registeredUser = dal.Save(user);
-            return RedirectToAction("SignInUser", "Authentication", registeredUser);
+            var registeredUser = _repo.Save(user);
+            return RedirectToAction("SignInUser", "Authentication", registeredUser); // probably redirect to login and ask instead
         }
 
         public async Task<IActionResult> SignInUser(User user)
@@ -42,12 +48,19 @@ namespace e_commerce_cp.Controllers
             //Logic to get the user's role and see if he exists.. hard code for now
             //Implement a method like AuthenticateUser();
 
+            var userFromRepo = _repo.AuthenticateUser(user);
+            if (userFromRepo == null)
+            {
+                ViewBag.ErrorMessage = "Your email or password is incorrect.";
+                return View("Login");
+            }
+
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.Email),
-                new Claim("FirstName", user.FirstName),
-                new Claim("LastName", user.LastName),
-                new Claim(ClaimTypes.Role, "Administrator"),
+                new Claim(ClaimTypes.Name, userFromRepo.Email),
+                new Claim("FirstName", userFromRepo.FirstName),
+                new Claim("LastName", userFromRepo.LastName),
+                new Claim(ClaimTypes.Role, "User"),
             };
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
