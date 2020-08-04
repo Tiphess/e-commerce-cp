@@ -1,6 +1,5 @@
 ﻿using e_commerce_cp.EntityConfigurations;
 using e_commerce_cp.Models;
-using e_commerce_cp.Utils.AppSettings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;

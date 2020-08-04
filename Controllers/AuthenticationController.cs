@@ -6,10 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using e_commerce_cp.Data;
 using e_commerce_cp.Data.Interfaces;
-using e_commerce_cp.DataAccessLayer.Authentication;
 using e_commerce_cp.Models;
-using e_commerce_cp.Utils;
-using e_commerce_cp.Utils.AppSettings;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -27,8 +24,10 @@ namespace e_commerce_cp.Controllers
             _repo = repo;
         }
 
-        public IActionResult Login()
+        public IActionResult Login(User user = null)
         {
+            if (user != null) ViewBag.RegisterSuccess = "You succesfully registered. You can now log in.";
+
             return View();
         }
 
@@ -40,13 +39,11 @@ namespace e_commerce_cp.Controllers
         public IActionResult RegisterNewUser(User user)
         {
             var registeredUser = _repo.Save(user);
-            return RedirectToAction("SignInUser", "Authentication", registeredUser); // probably redirect to login and ask instead
+            return RedirectToAction("Login", "Authentication", registeredUser);
         }
 
         public async Task<IActionResult> SignInUser(User user)
         {
-            //Logic to get the user's role and see if he exists.. hard code for now
-            //Implement a method like AuthenticateUser();
 
             var userFromRepo = _repo.AuthenticateUser(user);
             if (userFromRepo == null)

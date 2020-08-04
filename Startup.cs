@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using e_commerce_cp.Data;
 using e_commerce_cp.Data.Implementations;
 using e_commerce_cp.Data.Interfaces;
-using e_commerce_cp.Utils.AppSettings;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
