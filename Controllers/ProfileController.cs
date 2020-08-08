@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace e_commerce_cp.Controllers
 {
-    [Authorize(Roles = "Member")]
-    public class ShopController : Controller
+    [Authorize]
+    public class ProfileController : Controller
     {
         public IActionResult Index()
         {

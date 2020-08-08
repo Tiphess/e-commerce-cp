@@ -9,6 +9,7 @@ using e_commerce_cp.Data.Interfaces;
 using e_commerce_cp.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -26,7 +27,7 @@ namespace e_commerce_cp.Controllers
 
         public IActionResult Login(User user = null)
         {
-            if (user != null) ViewBag.RegisterSuccess = "You succesfully registered. You can now log in.";
+            if (user.Id != 0) ViewBag.RegisterSuccess = "You succesfully registered. You can now log in.";
 
             return View();
         }
@@ -57,7 +58,7 @@ namespace e_commerce_cp.Controllers
                 new Claim(ClaimTypes.Name, userFromRepo.Email),
                 new Claim("FirstName", userFromRepo.FirstName),
                 new Claim("LastName", userFromRepo.LastName),
-                new Claim(ClaimTypes.Role, "User"),
+                new Claim(ClaimTypes.Role, "User")
             };
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -75,7 +76,8 @@ namespace e_commerce_cp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public async Task<IActionResult> SignOutUser()
+        [Authorize]
+        public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");

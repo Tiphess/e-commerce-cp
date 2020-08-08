@@ -30,7 +30,11 @@ namespace e_commerce_cp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => 
+            {
+                options.LoginPath = "/Authentication/Login";
+                options.AccessDeniedPath = "...";
+            });
 
             services.AddDbContext<ECommerceCPContext>(options => options.UseSqlServer(Configuration.GetConnectionString("e_commerce_cp")));
 
